@@ -1,0 +1,71 @@
+{
+  "name": "nei",
+  "version": "0.0.1",
+  "description": "呐呐呐呐呐呐",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --mode=development --port 3000 --hot",
+    "build": "webpack --config webpack.config.js --mode=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naichazhenhaohe/Nei.git"
+  },
+  "author": "bbbiaozzza",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/naichazhenhaohe/Nei/issues"
+  },
+  "homepage": "https://github.com/naichazhenhaohe/Nei#readme",
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/polyfill": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-react": "^7.8.3",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "styled-jsx-plugin-less": "^0.0.1-alpha.1",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "styled-jsx": "^3.2.4"
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ],
+    "plugins": [
+      [
+        "styled-jsx/babel",
+        {
+          "plugins": [
+            "styled-jsx-plugin-less"
+          ]
+        }
+      ],
+      [
+        "prismjs",
+        {
+          "languages": [
+            "javascript",
+            "css",
+            "html",
+            "jsx",
+            "markup"
+          ],
+          "plugins": [
+            "line-numbers",
+            "show-language"
+          ],
+          "theme": "okaidia",
+          "css": true
+        }
+      ]
+    ]
+  }
+}
