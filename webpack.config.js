@@ -15,15 +15,7 @@ module.exports = function() {
         {
           test: /\.(js|jsx|ts|tsx)$/,
           include: [path.resolve(__dirname, 'src')],
-          loader: 'babel-loader',
-          options: {
-            babelrc: false,
-            configFile: false,
-            compact: false,
-            presets: ['@babel/preset-env', '@babel/preset-react'],
-            cacheDirectory: true,
-            cacheCompression: false
-          }
+          loader: 'babel-loader'
         }
       ]
     },
