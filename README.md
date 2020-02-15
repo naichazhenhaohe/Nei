@@ -20,9 +20,9 @@ create-react-app is NOT used. it's a absolutely great tool, but i want to config
 
 huge quantity of things to be done and the followings will be synchronized
 
-[ ] write more UI components
-[ ] optimize packaging (how about using [nwb](https://github.com/insin/nwb)?)
-[ ] optimize the webpack configuration
-[ ] build a homepage
-[ ] complete my graduation design document
+- [ ] write more UI components
+- [ ] optimize packaging (how about using [nwb](https://github.com/insin/nwb)?)
+- [ ] optimize the webpack configuration
+- [ ] build a homepage
+- [ ] complete my graduation design document
 
