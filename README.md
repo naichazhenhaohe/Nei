@@ -24,5 +24,4 @@ huge quantity of things to be done and the followings will be synchronized
 - [ ] optimize packaging (how about using [nwb](https://github.com/insin/nwb)?)
 - [ ] optimize the webpack configuration
 - [ ] build a homepage
-- [ ] complete my graduation design document
 

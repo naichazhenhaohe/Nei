@@ -20,7 +20,16 @@ module.exports = function() {
       ]
     },
     resolve: {
-      extensions: ['.js', '.json', '.jsx']
+      extensions: ['.js', '.json', '.jsx'],
+      alias: {
+        '@com': path.resolve(__dirname, 'src/components')
+      }
+    },
+    devServer: {
+      contentBase: path.join(__dirname, 'docs'),
+      compress: true,
+      port: 2333,
+
     },
     plugins: [
       new HtmlwebpackPlugin({

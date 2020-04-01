@@ -1,10 +1,3 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Button } from './components'
+import Button from './components/button'
 
-ReactDOM.render(
-  <div>
-    <Button text="hahaha" color="blue" />
-  </div>,
-  document.getElementById('root')
-)
+export { Button }

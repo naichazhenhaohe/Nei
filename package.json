@@ -7,7 +7,8 @@
   "author": "bbbiaozzza",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --mode=development --port 3000 --hot",
+    "storybook": "start-storybook",
+    "start": "bisheng start",
     "build": "webpack --config webpack.config.js --mode=production",
     "build:commonjs": "cross-env BABEL_OUTPUT=commonjs babel src/components --out-dir lib/ --ignore **/__tests__,**/__mocks__",
     "build:esm": "babel src/components --out-dir esm/ --ignore **/__tests__,**/__mocks__",
@@ -33,18 +34,20 @@
     "@babel/polyfill": "^7.8.3",
     "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.3",
+    "@storybook/addon-knobs": "^5.3.17",
+    "@storybook/react": "^5.3.17",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
     "cpx": "^1.5.0",
     "cross-env": "^7.0.0",
     "html-webpack-plugin": "^3.2.0",
-    "styled-jsx-plugin-less": "^0.0.1-alpha.1",
+    "node-sass": "^4.13.1",
+    "styled-jsx-plugin-sass": "^1.0.0",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
-    "less": "^3.11.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -68,7 +71,12 @@
         }
       ],
       [
-        "styled-jsx/babel"
+        "styled-jsx/babel",
+        {
+          "plugins": [
+            "styled-jsx-plugin-sass"
+          ]
+        }
       ]
     ]
   }
