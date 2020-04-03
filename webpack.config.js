@@ -16,6 +16,25 @@ module.exports = function() {
           test: /\.(js|jsx|ts|tsx)$/,
           include: [path.resolve(__dirname, 'src')],
           loader: 'babel-loader'
+        },
+        {
+          test: /\.less$/,
+          exclude: /node_modules/,
+          use: [
+            {
+              loader: 'style-loader'
+            },
+            {
+              loader: 'css-loader'
+            },
+            {
+              loader: 'less-loader',
+              options: {
+                strictMath: true,
+                noIeCompat: true
+              }
+            }
+          ]
         }
       ]
     },
@@ -28,8 +47,7 @@ module.exports = function() {
     devServer: {
       contentBase: path.join(__dirname, 'docs'),
       compress: true,
-      port: 2333,
-
+      port: 2333
     },
     plugins: [
       new HtmlwebpackPlugin({
