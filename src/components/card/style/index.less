@@ -1,0 +1,46 @@
+@import '../../style/index';
+@import '../../style/mixins.less';
+
+.nei-card {
+  .reset-component;
+  position: relative;
+  background: @card-background;
+  border-radius: @card-radius;
+  transition: all 0.3s;
+
+  &-bordered {
+    border: @border-width-base @border-style-base @border-color-split;
+  }
+
+  &-head {
+    min-height: @card-head-height;
+    margin-bottom: -1px;
+    padding: 0 @card-padding-base;
+    color: @card-head-color;
+    font-weight: 500;
+    font-size: @card-head-font-size;
+    background: @card-head-background;
+    border-bottom: @border-width-base @border-style-base @border-color-split;
+    border-radius: @card-radius @card-radius 0 0;
+    .clearfix;
+
+    &-wrapper {
+      display: flex;
+      align-items: center;
+    }
+
+    &-title {
+      display: inline-block;
+      flex: 1;
+      padding: @card-head-padding 0;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &-body {
+    padding: @card-padding-base;
+    .clearfix;
+  }
+}

@@ -10,3 +10,4 @@ this repository is storing my graduation project
 2. yarn (or npm install
 3. yarn start (or npm start
 
+

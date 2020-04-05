@@ -1,3 +1,5 @@
 import Button from './components/button'
 
-export { Button }
+import Card from './components/card'
+
+export { Button, Card }

@@ -5,8 +5,8 @@ import PropTypes from 'prop-types'
 import './style/index.less'
 
 export default function Button(props) {
-  const { type, className, children, plusStyle, danger, disabled, ghost } = props
-
+  const { type, className, children, plusStyle, danger, disabled, ghost, ...others } = props
+  const prefixClass = 'nei-btn'
   const handleClick = e => {
     const { onClick } = props
     if (onClick) {
@@ -16,14 +16,14 @@ export default function Button(props) {
 
   console.log(disabled)
 
-  let btnClass = classNames('btn', className, {
-    [`btn-${type}`]: type,
-    [`btn-danger`]: !!danger && type !== 'link',
-    [`btn-danger-link`]: !!danger && type === 'link',
-    [`btn-ghost`]: !!ghost
+  let btnClass = classNames(prefixClass, className, {
+    [`${prefixClass}-${type}`]: type,
+    [`${prefixClass}-danger`]: !!danger && type !== 'link',
+    [`${prefixClass}-danger-link`]: !!danger && type === 'link',
+    [`${prefixClass}-ghost`]: !!ghost
   })
   return (
-    <button className={btnClass} onClick={handleClick} disabled={!!disabled}>
+    <button className={btnClass} onClick={handleClick} disabled={!!disabled} {...others}>
       {children}
       <style jsx>{`
         ${plusStyle ? plusStyle : ''}
