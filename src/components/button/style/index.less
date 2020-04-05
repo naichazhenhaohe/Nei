@@ -1,5 +1,65 @@
 @import '../../style/index';
 
+.btn {
+  position: relative;
+  font-weight: @btn-font-weight;
+  display: inline-block;
+  border-radius: @btn-border-radius;
+  border: @btn-border-width @btn-border-style transparent;
+  text-align: center;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: all 0.3s linear;
+  user-select: none;
+  height: 32px;
+  padding: 4px 15px;
+  background: #fff;
+  color: rgba(0, 0, 0, 0.65);
+  white-space: nowrap;
+  border-color: #d9d9d9;
+  &,
+  &:active,
+  &:focus {
+    outline: 0;
+  }
+  &[disabled] {
+    cursor: not-allowed;
+    color: rgba(0, 0, 0, 0.25);
+    background-color: #f5f5f5;
+    border-color: #d9d9d9;
+    text-shadow: none;
+    box-shadow: none;
+  }
+}
+
 .btn-primary {
-  background: @primary;
+  color: @btn-primary-color;
+  background-color: @btn-primary-background;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+}
+
+.btn-link {
+  background: transparent;
+  border: transparent;
+  box-shadow: none;
+  color: @link-color;
+  &[disabled] {
+    background-color: transparent;
+  }
+}
+
+.btn-danger {
+  color: @btn-danger-color;
+  background-color: @btn-danger-bg;
+  border-color: @btn-danger-border;
+}
+
+.btn-danger-link {
+  color: @error-color;
+}
+
+.btn-demo {
+  button {
+    margin: 10px;
+  }
 }
