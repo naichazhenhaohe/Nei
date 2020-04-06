@@ -1,22 +1,20 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
-import { Card } from '../src'
-import './stories.less'
+import { Button, Card } from '../../src'
 
-storiesOf('Card', module).add('食用指南', () => {
+export default function CardStory() {
   const style_1 = `
-    background-color: #d8ff00;
-  `
+  background-color: #d8ff00;
+`
   const style_2 = `
-    color: green;
-  `
+  color: green;
+`
   const redBackground = `background-color: #ffbed0`
   const blueBackground = `background-color: #bec6ff`
   const yellowBackground = `background-color: #fbffbe`
   return (
     <div className="card-demo narrow-card">
       <Card title="title 属性">
-        <Card title="可以为字符串" />
+        <Card title="可以为字符串">标题为``</Card>
         <Card title={<span style={{ color: 'red' }}>也可以为自定义节点</span>} />
       </Card>
 
@@ -47,4 +45,4 @@ storiesOf('Card', module).add('食用指南', () => {
       </Card>
     </div>
   )
-})
+}

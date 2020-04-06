@@ -1,15 +1,13 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
-import { Button, Card } from '../src'
-import './stories.less'
+import { Button, Card } from '../../src'
 
-storiesOf('Button', module).add('食用指南', () => {
+export default function ButtonStory() {
   const style_1 = `
-    background-color: #d8ff00;
-  `
+  background-color: #d8ff00;
+`
   const style_2 = `
-    background-color: #ffbebe;
-  `
+  background-color: #ffbebe;
+`
   return (
     <div className="btn-demo narrow-card">
       <Card title="type 属性">
@@ -50,12 +48,13 @@ storiesOf('Button', module).add('食用指南', () => {
       <Card
         title={
           <div>
-            ghost属性 <span style={{ color: 'red' }}>未完成!</span>
+            <span style={{ color: 'red' }}>Todo List</span>
           </div>
         }
       >
-        <Button ghost>ghost</Button>
+        <div>1. ghost 属性</div>
+        <div>2. hover / active 样式变化</div>
       </Card>
     </div>
   )
-})
+}

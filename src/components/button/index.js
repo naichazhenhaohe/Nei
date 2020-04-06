@@ -14,8 +14,6 @@ export default function Button(props) {
     }
   }
 
-  console.log(disabled)
-
   let btnClass = classNames(prefixClass, className, {
     [`${prefixClass}-${type}`]: type,
     [`${prefixClass}-danger`]: !!danger && type !== 'link',
