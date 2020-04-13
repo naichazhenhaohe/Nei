@@ -1,26 +1,6 @@
-import React from 'react'
-import classNames from 'classnames'
+import Checkbox from './checkbox'
+import CheckboxGroup from './checkboxGroup'
 
-import './style/index.less'
+Checkbox.Group = CheckboxGroup
 
-export default function Checkbox(props) {
-  const { checked = false, className, children, ...others } = props
-  const prefixClass = 'nei-checkbox'
-  const checkboxClass = classNames(prefixClass, className)
-
-  const handleChange = e => {
-    const { onChange } = props
-    if (onChange) {
-      onChange(e)
-    }
-  }
-
-  return (
-    <div className={`${prefixClass}-wrapper`}>
-      <span className={prefixClass}>
-        <input checked={checked} onChange={handleChange} type="checkbox" />
-      </span>
-      <span>{children}</span>
-    </div>
-  )
-}
+export default Checkbox
