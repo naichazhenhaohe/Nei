@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { ButtonStory, CardStory, Isolator, Checkbox } from './components'
+import { ButtonStory, CardStory, Isolator, Checkbox, Radio } from './components'
 import './stories.less'
 
 storiesOf('食用指南', module)
@@ -9,3 +9,4 @@ storiesOf('食用指南', module)
   .add('Card', () => <CardStory />)
   .add('Isolator', () => <Isolator />)
   .add('Checkbox', () => <Checkbox />)
+  .add('Radio', () => <Radio />)

@@ -15,7 +15,7 @@ export default React.memo(
     disabled,
     ...props
   }) => {
-    const [selfChecked, setSelfChecked] = useState(initChecked)
+    const [isChecked, setIsChecked] = useState(initChecked)
     const { updateState, inGroup, disabledAll, values } = useCheckbox()
     // 如果不在复选组中，依据传入的 disabled 判断
     // 若在组中，则同时考虑组内禁止状态和自身禁止状态
@@ -24,32 +24,32 @@ export default React.memo(
     const prefixClass = 'nei-checkbox'
     const checkboxClass = classNames(prefixClass, className)
     const innerClass = classNames(`${prefixClass}-inner`, {
-      [`${prefixClass}-checked`]: !selfChecked
+      [`${prefixClass}-checked`]: !isChecked
     })
 
     const handleChange = useCallback(
       e => {
         if (isDisabled) return
-        if (inGroup && updateState) {
-          updateState && updateState(value, !selfChecked)
+        if (inGroup) {
+          updateState(value, !isChecked)
         }
-        setSelfChecked(!selfChecked)
+        setIsChecked(!isChecked)
         onChange && onChange(e)
       },
-      [updateState, onChange, isDisabled, selfChecked]
+      [updateState, onChange, isDisabled, isChecked]
     )
 
     if (inGroup) {
       useEffect(() => {
         const status = values.includes(value)
-        if (status === selfChecked) return
-        setSelfChecked(status)
+        if (status === isChecked) return
+        setIsChecked(status)
       }, [values.join(',')])
     }
 
     useEffect(() => {
       if (checked === undefined) return
-      setSelfChecked(checked)
+      setIsChecked(checked)
     }, [checked])
 
     return (
@@ -58,10 +58,10 @@ export default React.memo(
           <input
             type="checkbox"
             disabled={isDisabled}
-            checked={selfChecked}
+            checked={isChecked}
             onChange={handleChange}
           />
-          <span className={innerClass}></span>
+          <span className={innerClass} />
         </span>
         <span className="text">{children}</span>
         <style jsx>{`
@@ -74,10 +74,8 @@ export default React.memo(
             padding: 0;
             color: rgba(0, 0, 0, 0.65);
             font-size: 14px;
-            font-variant: tabular-nums;
             line-height: 1.5715;
             list-style: none;
-            font-feature-settings: 'tnum';
             position: relative;
             top: -0.09em;
             display: inline-block;
