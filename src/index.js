@@ -8,4 +8,8 @@ import Checkbox from './components/checkbox'
 
 import Radio from './components/radio'
 
-export { Button, Card, Isolator, Checkbox, Radio }
+import Switch from './components/switch'
+
+import Tag from './components/tag'
+
+export { Button, Card, Isolator, Checkbox, Radio, Switch, Tag }
