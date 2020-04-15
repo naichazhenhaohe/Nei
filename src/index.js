@@ -12,4 +12,6 @@ import Switch from './components/switch'
 
 import Tag from './components/tag'
 
-export { Button, Card, Isolator, Checkbox, Radio, Switch, Tag }
+import Input from './components/input'
+
+export { Button, Card, Isolator, Checkbox, Radio, Switch, Tag, Input }
