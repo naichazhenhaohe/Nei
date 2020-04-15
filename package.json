@@ -11,8 +11,7 @@
     "build": "webpack --config webpack.config.js --mode=production",
     "build:commonjs": "cross-env BABEL_OUTPUT=commonjs babel src/components --out-dir lib/ --ignore **/__tests__,**/__mocks__",
     "build:esm": "babel src/components --out-dir esm/ --ignore **/__tests__,**/__mocks__",
-    "copy-css:esm": "cpx \"src/components/**/*.css\" esm",
-    "copy-css:lib": "cpx \"src/components/**/*.css\" lib"
+    "git": "git add . && git commit -m ':beers:' && git push"
   },
   "repository": {
     "type": "git",
