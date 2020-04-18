@@ -6,5 +6,6 @@ import Radio from './radio'
 import Switch from './switch'
 import Tag from './tag'
 import Input from './input'
+import Progress from './progress'
 
-export { ButtonStory, CardStory, Isolator, Checkbox, Radio, Switch, Tag, Input }
+export { ButtonStory, CardStory, Isolator, Checkbox, Radio, Switch, Tag, Input, Progress }

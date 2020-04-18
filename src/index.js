@@ -14,4 +14,6 @@ import Tag from './components/tag'
 
 import Input from './components/input'
 
-export { Button, Card, Isolator, Checkbox, Radio, Switch, Tag, Input }
+import Progress from './components/progress'
+
+export { Button, Card, Isolator, Checkbox, Radio, Switch, Tag, Input, Progress }

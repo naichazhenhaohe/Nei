@@ -1,7 +1,17 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { ButtonStory, CardStory, Isolator, Checkbox, Radio, Switch, Tag, Input } from './components'
+import {
+  ButtonStory,
+  CardStory,
+  Isolator,
+  Checkbox,
+  Radio,
+  Switch,
+  Tag,
+  Input,
+  Progress
+} from './components'
 import './stories.less'
 
 storiesOf('食用指南', module)
@@ -13,3 +23,4 @@ storiesOf('食用指南', module)
   .add('Switch', () => <Switch />)
   .add('Tag', () => <Tag />)
   .add('Input', () => <Input />)
+  .add('Progress', () => <Progress />)
