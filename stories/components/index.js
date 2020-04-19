@@ -7,5 +7,6 @@ import Switch from './switch'
 import Tag from './tag'
 import Input from './input'
 import Progress from './progress'
+import Tooltip from './tooptip'
 
-export { ButtonStory, CardStory, Isolator, Checkbox, Radio, Switch, Tag, Input, Progress }
+export { ButtonStory, CardStory, Isolator, Checkbox, Radio, Switch, Tag, Input, Progress, Tooltip }
