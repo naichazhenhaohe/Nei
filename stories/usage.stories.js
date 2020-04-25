@@ -10,8 +10,9 @@ import {
   Switch,
   Tag,
   Input,
-  Progress, 
-  Tooltip
+  Progress,
+  Tooltip,
+  Select
 } from './components'
 import './stories.less'
 
@@ -26,3 +27,4 @@ storiesOf('食用指南', module)
   .add('Input', () => <Input />)
   .add('Progress', () => <Progress />)
   .add('Tooltip', () => <Tooltip />)
+  .add('Select', () => <Select />)

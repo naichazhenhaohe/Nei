@@ -18,4 +18,6 @@ import Progress from './components/progress'
 
 import Tooltip from './components/tooltip'
 
-export { Button, Card, Isolator, Checkbox, Radio, Switch, Tag, Input, Progress, Tooltip }
+import Select from './components/select'
+
+export { Button, Card, Isolator, Checkbox, Radio, Switch, Tag, Input, Progress, Tooltip, Select }
