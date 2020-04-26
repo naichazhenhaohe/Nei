@@ -2,6 +2,7 @@ export const color = {
   primary: '#aa11ff',
   background: '#ffffff',
   disabledBackground: '#fafafa',
+  selectedBackground: '#e9e9e9',
   disabledColor: '#888888',
   foreground: '#000000',
   success: '#0077ff',

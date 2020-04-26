@@ -10,7 +10,7 @@ export default React.memo(
     const selected = useMemo(() => (value ? optionValue === value : false), [optionValue, value])
     const bgColor = useMemo(() => {
       if (isDisabled) return theme.color.disabledBackground
-      return selected ? theme.color.disabledBackground : theme.color.background
+      return selected ? theme.color.selectedBackground : theme.color.background
     }, [selected, isDisabled])
     const color = useMemo(() => {
       if (isDisabled) return theme.color.disabledColor
@@ -55,7 +55,7 @@ export default React.memo(
             border-bottom-right-radius: ${theme.layout.radius};
           }
           div:hover {
-            background-color: ${theme.color.disabledBackground};
+            background-color: ${theme.color.selectedBackground};
           }
         `}</style>
       </>

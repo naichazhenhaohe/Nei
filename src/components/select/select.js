@@ -136,10 +136,13 @@ export default React.memo(
               max-width: 80vw;
               width: initial;
               overflow: hidden;
-              transition: all 0.2s ease 0s;
-              border: 1px solid #eaeaea;
+              transition: ${theme.layout.transitionAll};
+              border-width: 1px;
+              border-style: solid;
+              border-color: ${visible ? theme.color.primary : theme.color.border};
               border-radius: ${theme.layout.radius};
-              padding: 0 4pt 0 8pt;
+              padding-right: ${theme.layout.quarterGap};
+              padding-left: ${theme.layout.halfGap};
               height: ${targetSize.height};
               min-width: ${targetSize.minWidth};
               background-color: ${disabled
@@ -147,15 +150,15 @@ export default React.memo(
                 : theme.color.background};
             }
             .nei-select:hover {
-              border-color: ${disabled ? theme.color.border : theme.color.foreground};
+              border-color: ${disabled ? theme.color.border : theme.color.primary};
             }
 
             .nei-select:hover .nei-select-icon {
-              color: ${disabled ? '#666' : theme.color.foreground};
+              color: ${disabled ? theme.color.disabledColor : theme.color.primary};
             }
             .nei-select-icon {
               position: absolute;
-              right: 4pt;
+              right: ${theme.layout.quarterGap};
               font-size: 0.875rem;
               top: 50%;
               bottom: 0;
@@ -185,6 +188,7 @@ export default React.memo(
               padding: 0;
               margin: 0;
               color: inherit;
+              font-size: inherit;
             }
             .nei-select-placeholder {
               color: ${theme.color.placeholder};
