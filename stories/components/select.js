@@ -6,9 +6,15 @@ export default function SelectStory() {
   return (
     <div className="radio-demo narrow-card">
       <Card title="checked 属性">
-        <Select placeholder="demo" clear onChange={value => console.log(value)}>
-          <Option value="1">1</Option>
-          <Option value="2">2</Option>
+        <Select placeholder="demo" onChange={value => console.log(value)}>
+        <Option value="apple">apple</Option>
+          <Option value="banana">banana</Option>
+        </Select>
+      </Card>
+      <Card>
+        <Select initValue="apple" disabled>
+          <Option value="apple">apple</Option>
+          <Option value="banana">banana</Option>
         </Select>
       </Card>
     </div>

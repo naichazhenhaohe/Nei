@@ -4,24 +4,42 @@ import { SelectContext } from './selectContext'
 import SelectDropdown from './selectDropdown'
 import useClickElsewhere from '../_util/useClickElsewhere'
 import SelectIcon from './selectIcon'
+import useTheme from '../_style/useTheme'
 
-const pickChild = (children, key, value) => {
+const pickChild = (children, value) => {
   let target = []
-  const widthoutPropChildren = React.Children.map(children, item => {
-    if (!React.isValidElement(item)) return null
-    if (!item.props) return item
-    if (item.props[key] === value) {
+  React.Children.map(children, item => {
+    if (item.props.value === value) {
       target.push(item)
-      return null
     }
-    return item
   })
   const targetChildren = target.length >= 0 ? target : undefined
-  return [widthoutPropChildren, targetChildren]
+  return targetChildren
 }
 
 const pickFirstChild = children => {
   return React.Children.toArray(children)[0]
+}
+
+const getSize = (theme, size = 'default') => {
+  const sizes = {
+    small: {
+      height: `calc(1.344 * ${theme.layout.gap})`,
+      fontSize: `calc(0.75 * ${theme.layout.fontSize})`,
+      minWidth: `calc(8 * ${theme.layout.fontSize})`
+    },
+    default: {
+      height: `calc(1.688 * ${theme.layout.gap})`,
+      fontSize: `calc(0.875 * ${theme.layout.fontSize})`,
+      minWidth: `calc(10 * ${theme.layout.fontSize})`
+    },
+    large: {
+      height: `calc(2 * ${theme.layout.gap})`,
+      fontSize: `calc(1.225 * ${theme.layout.fontSize})`,
+      minWidth: `calc(12.5 * ${theme.layout.fontSize})`
+    }
+  }
+  return sizes[size]
 }
 
 export default React.memo(
@@ -33,11 +51,13 @@ export default React.memo(
     className,
     placeholder,
     dropdownClassName = '',
-    size = 'medium',
+    size = 'default',
     clear = false,
     children,
     ...props
   }) => {
+    const theme = useTheme()
+    const targetSize = useMemo(() => getSize(theme, size), [theme, size])
     const prefixClass = 'nei-select'
     const selectClass = classNames(prefixClass, className)
     const ref = useRef(null)
@@ -79,7 +99,7 @@ export default React.memo(
       setVisible(!visible)
     }
     const selectedChild = useMemo(() => {
-      const [, optionChildren] = pickChild(children, 'value', value)
+      const optionChildren = pickChild(children, value)
       const child = pickFirstChild(optionChildren)
       if (!React.isValidElement(child)) return optionChildren
       /**
@@ -92,16 +112,16 @@ export default React.memo(
       <SelectContext.Provider value={initValue}>
         <div className={selectClass} ref={ref} onClick={handleClick} {...props}>
           {!value && (
-            <span className={classNames('nei-select-placeholder', 'nei-select-value')}>
+            <span className={classNames(`${prefixClass}-placeholder`, `${prefixClass}-value`)}>
               {placeholder}
             </span>
           )}
-          {value && <span className="nei-select-value">{selectedChild}</span>}
+          {value && <span className={`${prefixClass}-value`}>{selectedChild}</span>}
           <SelectDropdown visible={visible} className={dropdownClassName}>
             {children}
           </SelectDropdown>
           {!clear && (
-            <div className="nei-select-icon">
+            <div className={`${prefixClass}-icon`}>
               <SelectIcon />
             </div>
           )}
@@ -116,13 +136,22 @@ export default React.memo(
               max-width: 80vw;
               width: initial;
               overflow: hidden;
-              transition: border 0.2s ease 0s, color 0.2s ease-out 0s, box-shadow 0.2s ease 0s;
+              transition: all 0.2s ease 0s;
               border: 1px solid #eaeaea;
-              border-radius: 5px;
+              border-radius: ${theme.layout.radius};
               padding: 0 4pt 0 8pt;
-              height: calc(1.688 * 16pt);
-              min-width: 10rem;
-              background-color: ${disabled ? '#fafafa' : '#fff'};
+              height: ${targetSize.height};
+              min-width: ${targetSize.minWidth};
+              background-color: ${disabled
+                ? theme.color.disabledBackground
+                : theme.color.background};
+            }
+            .nei-select:hover {
+              border-color: ${disabled ? theme.color.border : theme.color.foreground};
+            }
+
+            .nei-select:hover .nei-select-icon {
+              color: ${disabled ? '#666' : theme.color.foreground};
             }
             .nei-select-icon {
               position: absolute;
@@ -136,6 +165,29 @@ export default React.memo(
               display: flex;
               align-items: center;
               color: #666;
+            }
+            .nei-select-value {
+              display: inline-flex;
+              flex: 1;
+              height: 100%;
+              align-items: center;
+              line-height: 1;
+              padding: 0;
+              margin-right: 1.25rem;
+              font-size: ${targetSize.fontSize};
+              color: ${disabled ? theme.color.disabledColor : theme.color.selectedValue};
+              width: calc(100% - 1.25rem);
+            }
+            .nei-select-value > :global(div),
+            .nei-select-value > :global(div:hover) {
+              border-radius: 0;
+              background-color: transparent;
+              padding: 0;
+              margin: 0;
+              color: inherit;
+            }
+            .nei-select-placeholder {
+              color: ${theme.color.placeholder};
             }
           `}</style>
         </div>

@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom'
 import useSelect from './useSelect'
 import useClickAnywhere from '../_util/useClickAnywhere'
 import { useSelectContext } from './selectContext'
+import useTheme from '../_style/useTheme'
 
 const defaultRect = {
   top: -1000,
@@ -23,6 +24,7 @@ const getRect = ref => {
 }
 
 export default React.memo(({ visible, children, className }) => {
+  const theme = useTheme()
   const { ref } = useSelectContext()
   const el = useSelect()
   const [rect, setRect] = useState(defaultRect)
@@ -69,13 +71,13 @@ export default React.memo(({ visible, children, className }) => {
           <div className={`select-dropdown ${className}`}>{children}</div>
           <style jsx>{`
             .select-dropdown {
-              border-radius: 5px;
-              box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
-              background-color: #fff;
+              border-radius: ${theme.layout.radius};
+              box-shadow: ${theme.layout.boxShadow};
+              background-color: ${theme.color.background};
               max-height: 15rem;
               overflow-y: auto;
               overflow-anchor: none;
-              padding: 4pt 0;
+              padding: ${theme.layout.quarterGap} 0;
             }
             .dropdown {
               position: absolute;
