@@ -2,5 +2,6 @@
 /build
 /lib
 /esm
+/dist
 yarn.lock
 yarn-error.log
