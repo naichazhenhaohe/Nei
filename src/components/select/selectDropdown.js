@@ -72,7 +72,7 @@ export default React.memo(({ visible, children, className }) => {
           <style jsx>{`
             .select-dropdown {
               border-radius: ${theme.layout.radius};
-              box-shadow: ${theme.layout.boxShadow};
+              box-shadow: ${theme.color.boxShadow};
               background-color: ${theme.color.background};
               max-height: 15rem;
               overflow-y: auto;

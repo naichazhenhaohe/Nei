@@ -3,7 +3,9 @@ import { Button, Card } from '../../src'
 
 export default function ButtonStory() {
   const style_1 = `
-  background-color: #d8ff00;
+  button {
+    background-color: #d8ff00;
+  }
 `
   const style_2 = `
   background-color: #ffbebe;

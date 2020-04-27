@@ -27,7 +27,7 @@ module.exports = function() {
         const filename = filePath.replace('.jsx', '.js')
         return filename
       },
-      path: __dirname + '/dist',
+      path: __dirname + '/lib',
       libraryTarget: 'umd'
     },
     externals: [

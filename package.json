@@ -1,16 +1,13 @@
 {
   "name": "nei-ui",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description": "呐呐呐呐呐呐",
   "main": "lib/index.js",
-  "module": "esm/index.js",
   "author": "bbbiaozzza",
   "license": "MIT",
   "scripts": {
     "start": "start-storybook -p 2333",
     "build": "webpack --config webpack.config.js --mode=production",
-    "build:commonjs": "cross-env BABEL_OUTPUT=commonjs babel src/components --out-dir lib/ --ignore **/__tests__,**/__mocks__",
-    "build:esm": "babel src/components --out-dir esm/ --ignore **/__tests__,**/__mocks__",
     "git": "git add . && git commit -m ':beers:' && git push"
   },
   "repository": {
