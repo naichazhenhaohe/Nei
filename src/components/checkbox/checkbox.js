@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import classNames from 'classnames'
 import { useCheckbox } from './checkboxContext'
-
-import './style/index.less'
+import useTheme from '../_style/useTheme'
 
 export default React.memo(
   ({
@@ -15,6 +14,7 @@ export default React.memo(
     disabled,
     ...props
   }) => {
+    const theme = useTheme()
     const [isChecked, setIsChecked] = useState(initChecked)
     const { updateState, inGroup, disabledAll, values } = useCheckbox()
     // 如果不在复选组中，依据传入的 disabled 判断
@@ -63,7 +63,7 @@ export default React.memo(
           />
           <span className={innerClass} />
         </span>
-        <span className="text">{children}</span>
+        <span className="nei-checkbox-text">{children}</span>
         <style jsx>{`
           label {
             position: relative;
@@ -74,7 +74,6 @@ export default React.memo(
             padding: 0;
             color: rgba(0, 0, 0, 0.65);
             font-size: 14px;
-            line-height: 1.5715;
             list-style: none;
             position: relative;
             top: -0.09em;
@@ -107,9 +106,11 @@ export default React.memo(
             width: 16px;
             height: 16px;
             direction: ltr;
-            border-radius: 2px;
+            border-radius: ${theme.layout.radius};
             border-collapse: separate;
             transition: all 0.3s;
+            background-color: ${theme.color.background};
+            border: 1px solid ${theme.color.border};
           }
           .nei-checkbox-checked {
             position: relative;
@@ -119,28 +120,28 @@ export default React.memo(
             width: 16px;
             height: 16px;
             direction: ltr;
-            border-radius: 2px;
+            border-radius: ${theme.layout.radius};
             border-collapse: separate;
-            transition: all 0.3s;
-            &::after {
-              position: absolute;
-              display: table;
-              border: 2px solid #fff;
-              border-top: 0;
-              border-left: 0;
-              transform: rotate(45deg) scale(1) translate(-50%, -50%);
-              opacity: 1;
-              transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
-              content: ' ';
-              top: 50%;
-              left: 22%;
-              width: 5.71428571px;
-              height: 9.14285714px;
-            }
+            transition: ${theme.layout.transitionAll};
+            background-color: ${theme.color.primary};
+            border: 1px solid ${theme.color.primary};
           }
-          .text {
-            padding-right: 8px;
-            padding-left: 8px;
+          .nei-checkbox-checked::after {
+            position: absolute;
+            display: table;
+            border: 2px solid #fff;
+            border-top: 0;
+            border-left: 0;
+            transform: rotate(45deg) scale(1) translate(-50%, -50%);
+            transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+            content: ' ';
+            top: 50%;
+            left: 22%;
+            width: 5px;
+            height: 10px;
+          }
+          .nei-checkbox-text {
+            padding: 0 ${theme.layout.quarterGap};
           }
         `}</style>
       </label>

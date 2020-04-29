@@ -18,7 +18,7 @@ export default function CardStory() {
         <Button onClick={handleBtnClick}>点击更改复选框状态</Button>
       </Card>
       <Card title="initChecked 属性">
-        <Checkbox initChecked checked={checked}>
+        <Checkbox initChecked>
           Checkbox
         </Checkbox>
         <div>initChecked 属性用于定义复选框初始状态</div>
