@@ -1,7 +1,6 @@
 import React from 'react'
 import useTheme from '../_style/useTheme'
 import ThemeContext from '../_style/useTheme/themeContext'
-import { isObject } from 'util'
 
 const isObject = target => target && typeof target === 'object'
 
