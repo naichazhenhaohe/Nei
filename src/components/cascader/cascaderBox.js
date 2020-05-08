@@ -1,35 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useCascaderContext } from './cascaderContext'
 
 const CascaderBox = React.memo(({ options, ...props }) => {
-  // const { value, currentValue, addValue } = useCascaderContext()
-  const handleClick = e => {
-    console.log('???')
-  }
-  const current = {
-    value: 'jiangsu',
-    label: 'Jiangsu',
-    children: [
-      {
-        value: 'nanjing',
-        label: 'Nanjing',
-        children: [
-          {
-            value: 'zhonghuamen',
-            label: 'Zhong Hua Men'
-          }
-        ]
-      }
-    ]
+  const { value, currentValue, addValue } = useCascaderContext()
+  const [current, setCurrent] = useState()
+  console.log(value + '')
+  const handleClick = (e, option) => {
+    alert(option.label)
+    setCurrent(option)
   }
   return (
     <>
       {options.map((option, index) => (
-        <div className="option" key={index} onClick={handleClick}>
-          {option.label}...
+        <div className="option" key={index} onClick={e => handleClick(e, option)}>
+          {option.label}
         </div>
       ))}
-      {/* {current.children <CascaderBox options={current.children} />} */}
+      {current && current.children && <CascaderBox options={current.children} />}
     </>
   )
 })

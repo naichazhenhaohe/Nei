@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import useTheme from '../_style/useTheme'
 
 export default React.memo(
-  ({ type, className, children, plusStyle, danger, disabled, ghost, ...others }) => {
+  ({ type, className, children, plusStyle, onClick, danger, disabled, ghost, ...others }) => {
     const prefixClass = 'nei-btn'
     const theme = useTheme()
     const handleClick = e => {
