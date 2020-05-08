@@ -8,6 +8,22 @@ import Tag from './tag'
 import Input from './input'
 import Progress from './progress'
 import Tooltip from './tooptip'
-import Select from './select';
+import Select from './select'
+import Spacer from './spacer'
+import Cascader from './cascader'
 
-export { ButtonStory, CardStory, Isolator, Checkbox, Radio, Switch, Tag, Input, Progress, Tooltip,Select }
+export {
+  Spacer,
+  ButtonStory,
+  CardStory,
+  Isolator,
+  Checkbox,
+  Radio,
+  Switch,
+  Tag,
+  Input,
+  Progress,
+  Tooltip,
+  Select,
+  Cascader
+}

@@ -10,6 +10,8 @@ export default function CardStory() {
           <Button>button - 1</Button>
           <Button>button - 2</Button>
         </Isolator>
+        <Button>button - 1</Button>
+          <Button>button - 2</Button>
         <div>值还可以是 horizontal</div>
         <Isolator direction="horizontal">
           <Button>button - 1</Button>

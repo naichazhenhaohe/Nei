@@ -27,12 +27,6 @@ export default function ButtonStory() {
         </Button>
       </Card>
 
-      <Card title="plusStyle 属性">
-        <div>传入string类型css代码就可为引用的button组件添加特有的自定义样式</div>
-        <Button plusStyle={style_1}>Plus Style</Button>
-        <Button plusStyle={style_2}>Plus Style</Button>
-      </Card>
-
       <Card title="disabled 属性">
         <Button type="primary" disabled>
           Disabled primary
@@ -46,7 +40,7 @@ export default function ButtonStory() {
       <Card title="onClick 属性">
         <Button onClick={() => alert('clieked!')}>Click me</Button>
       </Card>
-
+      {/* 
       <Card
         title={
           <div>
@@ -56,7 +50,7 @@ export default function ButtonStory() {
       >
         <div>1. ghost 属性</div>
         <div>2. hover / active 样式变化</div>
-      </Card>
+      </Card> */}
     </div>
   )
 }

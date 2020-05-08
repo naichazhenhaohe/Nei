@@ -12,7 +12,9 @@ import {
   Input,
   Progress,
   Tooltip,
-  Select
+  Select,
+  Spacer,
+  Cascader
 } from './components'
 import './stories.less'
 
@@ -28,3 +30,5 @@ storiesOf('食用指南', module)
   .add('Progress', () => <Progress />)
   .add('Tooltip', () => <Tooltip />)
   .add('Select', () => <Select />)
+  .add('Spacer', () => <Spacer />)
+  .add('Cascader', () => <Cascader />)

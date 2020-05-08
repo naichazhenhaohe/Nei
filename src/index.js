@@ -20,4 +20,22 @@ import Tooltip from './components/tooltip'
 
 import Select from './components/select'
 
-export { Button, Card, Isolator, Checkbox, Radio, Switch, Tag, Input, Progress, Tooltip, Select }
+import Spacer from './components/spacer'
+
+import Cascader from './components/cascader'
+
+export {
+  Button,
+  Card,
+  Isolator,
+  Checkbox,
+  Radio,
+  Switch,
+  Tag,
+  Input,
+  Progress,
+  Tooltip,
+  Select,
+  Spacer,
+  Cascader
+}
