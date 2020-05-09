@@ -22,13 +22,14 @@ export const color = {
 }
 
 export const layout = {
+  fontSizeSmall: '12px',
   fontSize: '14px',
   fontSizeLarge: '16px',
   radius: '5px',
   gap: '16pt',
   halfGap: '8pt',
   quarterGap: '4pt',
-  transitionAll: 'all 0.2s ease 0s'
+  transitionAll: 'all 0.3s ease 0s'
 }
 
 export default {

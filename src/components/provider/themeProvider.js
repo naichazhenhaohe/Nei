@@ -38,3 +38,5 @@ const ThemeProvider = ({ children, theme }) => {
   const mergedTheme = mergeTheme(currentTheme, customTheme)
   return <ThemeContext.Provider value={mergedTheme}>{children}</ThemeContext.Provider>
 }
+
+export default ThemeProvider

@@ -2,8 +2,7 @@ import React from 'react'
 
 const defaultContext = {
   value: [],
-  currentValue: {},
-  addValue: () => {}
+  setValue: () => {}
 }
 
 export const CascaderContext = React.createContext(defaultContext)

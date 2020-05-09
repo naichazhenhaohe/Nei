@@ -5,15 +5,15 @@ export default function CardStory() {
   const options = [
     {
       value: 'zhejiang',
-      label: 'Zhejiang',
+      label: '浙江',
       children: [
         {
           value: 'hangzhou',
-          label: 'Hangzhou',
+          label: '杭州',
           children: [
             {
               value: 'xihu',
-              label: 'West Lake'
+              label: '西湖'
             }
           ]
         }
@@ -21,26 +21,32 @@ export default function CardStory() {
     },
     {
       value: 'jiangsu',
-      label: 'Jiangsu',
+      label: '江苏',
       children: [
         {
           value: 'nanjing',
-          label: 'Nanjing',
+          label: '南京',
           children: [
             {
               value: 'zhonghuamen',
-              label: 'Zhong Hua Men'
+              label: '中华门'
             }
           ]
         }
       ]
+    },
+    {
+      value: 'shanghai',
+      label: '上海'
     }
   ]
 
   return (
     <div className="checkbox-demo narrow-card">
       <Card title="checked 属性">
-        <Cascader options={options} />
+        <Cascader
+          options={options}
+        />
       </Card>
     </div>
   )
