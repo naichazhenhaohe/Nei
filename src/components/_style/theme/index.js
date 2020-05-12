@@ -1,12 +1,12 @@
 export const color = {
-  primary: '#aa11ff',
+  white: '#fff',
+  black: '#000',
   background: '#ffffff',
-  // disabledBackground: '#fafafa',
   disabledBackground: '#f5f5f5',
   selectedBackground: '#e9e9e9',
-  // disabledColor: '#888888',
   disabledColor: 'rgba(0, 0, 0, 0.25)',
   foreground: '#000000',
+  primary: '#4bf',
   success: '#0077ff',
   danger: '#ff1111',
   warning: '#ffaa22',
@@ -18,7 +18,7 @@ export const color = {
   value: '#a2a2a2',
   textShadow: '0 -1px 0 rgba(0, 0, 0, 0.12)',
   boxShadow: '0 8px 30px rgba(0, 0, 0, 0.12)',
-  link: '#aa11ff'
+  btnShadow: '0 2px 0 rgba(0, 0, 0, 0.15)'
 }
 
 export const layout = {

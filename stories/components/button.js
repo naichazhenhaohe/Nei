@@ -40,17 +40,23 @@ export default function ButtonStory() {
       <Card title="onClick 属性">
         <Button onClick={() => alert('clieked!')}>Click me</Button>
       </Card>
-      {/* 
-      <Card
-        title={
-          <div>
-            <span style={{ color: 'red' }}>Todo List</span>
-          </div>
-        }
-      >
-        <div>1. ghost 属性</div>
-        <div>2. hover / active 样式变化</div>
-      </Card> */}
+
+      <Card title="ghost">
+        <div style={{ background: '#bbb' }}>
+          <Button ghost>demo</Button>
+          <Button ghost type="link">
+            demo
+          </Button>
+          <Button ghost type="primary">
+            demo
+          </Button>
+        </div>
+      </Card>
+      <Card title="size">
+        <Button size="small">small btn</Button>
+        <Button size="default">btn</Button>
+        <Button size="large">large btn</Button>
+      </Card>
     </div>
   )
 }
