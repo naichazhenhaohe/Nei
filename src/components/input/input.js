@@ -1,44 +1,13 @@
 import React, { useEffect, useState, useMemo, useCallback } from 'react'
 import classNames from 'classnames'
-
-const getColors = type => {
-  const colors = {
-    default: {
-      color: '#000',
-      borderColor: '#eaeaea',
-      hoverBorder: '#666'
-    },
-    secondary: {
-      color: '#000',
-      borderColor: '#666',
-      hoverBorder: '#666'
-    },
-    success: {
-      color: '#000',
-      borderColor: '#3291ff',
-      hoverBorder: '#0070f3'
-    },
-    warning: {
-      color: '#000',
-      borderColor: '#f7b955',
-      hoverBorder: '#f5a623'
-    },
-    error: {
-      color: '#f00',
-      borderColor: '#f00',
-      hoverBorder: '#f90'
-    }
-  }
-
-  if (!type) return colors.default
-  return colors[type]
-}
+import { getColors, getSizes } from './style'
+import useTheme from '../_style/useTheme'
 
 export default React.memo(
   ({
     disabled = false,
     readOnly = false,
-    clearable = false,
+    size = 'default',
     autoComplete = 'off',
     placeholder = '',
     initValue = '',
@@ -47,16 +16,17 @@ export default React.memo(
     onChange,
     type = 'default',
     children,
+    onBlur,
+    onFocus,
     ...props
   }) => {
     const prefixClass = 'nei-input'
     const boxClass = classNames(`${prefixClass}-box`, className)
-    const statusClass = classNames({
-      'nei-input-disabled': disabled,
-      'nei-input-readOnly': readOnly
-    })
+    const theme = useTheme()
     const [selfValue, setSelfValue] = useState(initValue)
-    const { color, borderColor, hoverBorder } = useMemo(() => getColors(type), [type])
+    const [focus, setFocus] = useState(false)
+    const { color, borderColor, focusBorderColor } = useMemo(() => getColors(type, theme), [type, theme])
+    const { height, fontSize } = useMemo(() => getSizes(size, theme), [size, theme])
 
     useEffect(() => {
       if (value === undefined) return
@@ -72,11 +42,20 @@ export default React.memo(
       [disabled, readOnly, onChange]
     )
 
+    const handleFocus = e => {
+      setFocus(true)
+      onFocus && onFocus(e)
+    }
+
+    const handleBlur = e => {
+      setFocus(false)
+      onBlur && onBlur(e)
+    }
+
     return (
       <div className={boxClass}>
-        <div className={classNames('nei-input-wrapper', statusClass)}>
+        <div className={`nei-input-wrapper ${focus ? 'nei-focused' : ''}`}>
           <input
-            className={statusClass}
             type="text"
             placeholder={placeholder}
             disabled={disabled}
@@ -84,6 +63,8 @@ export default React.memo(
             autoComplete={autoComplete}
             value={selfValue}
             onChange={handleChange}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
             {...props}
           />
         </div>
@@ -91,6 +72,8 @@ export default React.memo(
           .nei-input-box {
             display: inline-flex;
             align-items: center;
+            height: ${height};
+            background-color: ${disabled ? theme.color.disabledBackground : theme.color.background};
           }
           .nei-input-wrapper {
             display: inline-flex;
@@ -100,18 +83,16 @@ export default React.memo(
             flex: 1;
             user-select: none;
             border-radius: 5px;
-            border: 1px solid ${borderColor};
+            border: 1px solid ${disabled ? theme.color.disabledColor : borderColor};
+            transition: ${theme.layout.transitionAll};
           }
-          .nei-input-wrapper.nei-input-disabled {
-            background-color: #fafafa;
-            border-color: #eaeaea;
-            cursor: not-allowed;
+          .nei-focused {
+            border-color: ${focusBorderColor};
           }
           input {
-            margin: 4px 10px;
-            padding: 0;
+            padding: ${`${theme.layout.quarterGap} ${theme.layout.halfGap}`};
             box-shadow: none;
-            font-size: 14px;
+            font-size: ${fontSize};
             background-color: transparent;
             border: none;
             color: ${color};
@@ -120,14 +101,16 @@ export default React.memo(
             width: 100%;
             -webkit-appearance: none;
           }
-          input.nei-input-disabled {
+          input[disabled] {
+            background-color: #fafafa;
+            border-color: #eaeaea;
             cursor: not-allowed;
           }
           ::placeholder,
           ::-moz-placeholder,
           :-ms-input-placeholder,
           ::-webkit-input-placeholder {
-            color: '#999';
+            color: ${theme.color.placeholder};
           }
         `}</style>
       </div>

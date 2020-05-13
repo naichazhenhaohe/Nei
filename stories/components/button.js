@@ -17,6 +17,8 @@ export default function ButtonStory() {
         <Button type="primary">Primary</Button>
         <Button>Default</Button>
         <Button type="link">Link</Button>
+        <Button type="success">Success</Button>
+        <Button type="warning">Warning</Button>
       </Card>
 
       <Card title="danger 属性">

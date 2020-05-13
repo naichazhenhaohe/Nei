@@ -4,16 +4,7 @@ import { useCheckbox } from './checkboxContext'
 import useTheme from '../_style/useTheme'
 
 export default React.memo(
-  ({
-    initChecked = false,
-    checked = false,
-    value = '',
-    className,
-    onChange,
-    children,
-    disabled,
-    ...props
-  }) => {
+  ({ initChecked = false, checked = false, value = '', className, onChange, children, disabled, ...props }) => {
     const theme = useTheme()
     const [isChecked, setIsChecked] = useState(initChecked)
     const { updateState, inGroup, disabledAll, values } = useCheckbox()
@@ -24,7 +15,7 @@ export default React.memo(
     const prefixClass = 'nei-checkbox'
     const checkboxClass = classNames(prefixClass, className)
     const innerClass = classNames(`${prefixClass}-inner`, {
-      [`${prefixClass}-checked`]: !isChecked
+      [`${prefixClass}-checked`]: isChecked
     })
 
     const handleChange = useCallback(
@@ -55,18 +46,14 @@ export default React.memo(
     return (
       <label className={`${prefixClass}-wrapper`} {...props}>
         <span className="checkbox">
-          <input
-            type="checkbox"
-            disabled={isDisabled}
-            checked={isChecked}
-            onChange={handleChange}
-          />
+          <input type="checkbox" disabled={isDisabled} checked={isChecked} onChange={handleChange} />
           <span className={innerClass} />
         </span>
         <span className="nei-checkbox-text">{children}</span>
         <style jsx>{`
           label {
             position: relative;
+            cursor: ${disabled || disabledAll ? 'not-allowed' : 'pointer'};
           }
           .checkbox {
             box-sizing: border-box;
@@ -82,7 +69,7 @@ export default React.memo(
             white-space: nowrap;
             vertical-align: middle;
             outline: none;
-            cursor: pointer;
+            cursor: ${disabled || disabledAll ? 'not-allowed' : 'pointer'};
           }
           input {
             box-sizing: border-box;
@@ -95,7 +82,7 @@ export default React.memo(
             z-index: 1;
             width: 100%;
             height: 100%;
-            cursor: pointer;
+            cursor: ${disabled || disabledAll ? 'not-allowed' : 'pointer'};
             opacity: 0;
           }
           .nei-checkbox-inner {
@@ -109,8 +96,8 @@ export default React.memo(
             border-radius: ${theme.layout.radius};
             border-collapse: separate;
             transition: all 0.3s;
-            background-color: ${theme.color.background};
-            border: 1px solid ${theme.color.border};
+            background-color: ${disabled || disabledAll ? theme.color.disabledDark : theme.color.background};
+            border: 1px solid ${disabled || disabledAll ? theme.color.disabledDark : theme.color.border};
           }
           .nei-checkbox-checked {
             position: relative;
@@ -123,8 +110,8 @@ export default React.memo(
             border-radius: ${theme.layout.radius};
             border-collapse: separate;
             transition: ${theme.layout.transitionAll};
-            background-color: ${theme.color.primary};
-            border: 1px solid ${theme.color.primary};
+            background-color: ${disabled || disabledAll ? theme.color.disabledDark : theme.color.primary};
+            border: 1px solid ${disabled || disabledAll ? theme.color.disabledDark : theme.color.primary};
           }
           .nei-checkbox-checked::after {
             position: absolute;

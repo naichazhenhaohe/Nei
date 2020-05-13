@@ -6,12 +6,6 @@ const getGhostColors = (type, theme) => {
       border: `1px solid ${theme.color.white}`,
       background: 'transparent'
     },
-    link: {
-      color: theme.color.white,
-      boxShadow: 'none',
-      border: 'transparent',
-      background: 'transparent'
-    },
     primary: {
       color: theme.color.primary,
       boxShadow: 'none',
@@ -61,17 +55,37 @@ export const getHoveredColors = (type, danger, ghost, theme) => {
       boxShadow: 'none'
     }
   }
-  
-  const noHoverStyle = { color: '', border: '', bg: '', boxShadow: '' }
-  const ghostStyle = {
-    color: theme.color.primary,
-    border: `1px solid ${theme.color.primary}`,
-    bg: '',
-    boxShadow: ''
+  const ghostColors = {
+    default: {
+      color: theme.color.primary,
+      border: `1px solid ${theme.color.primary}`,
+      bg: theme.color.background,
+      boxShadow: theme.color.btnShadow
+    },
+    primary: {
+      color: theme.color.white,
+      border: `1px solid ${theme.color.primary}`,
+      bg: theme.color.primary,
+      boxShadow: 'none'
+    },
+    success: {
+      color: theme.color.white,
+      border: `1px solid ${theme.color.success}`,
+      bg: theme.color.success,
+      boxShadow: 'none'
+    },
+    warning: {
+      color: theme.color.white,
+      border: `1px solid ${theme.color.warning}`,
+      bg: theme.color.warning,
+      boxShadow: 'none'
+    }
   }
 
+  const noHoverStyle = { color: '', border: '', bg: '', boxShadow: '' }
+
   if (danger) return noHoverStyle
-  if (ghost) return ghostStyle
+  if (ghost) return ghostColors[type] || noHoverStyle
 
   return colors[type] || noHoverStyle
 }

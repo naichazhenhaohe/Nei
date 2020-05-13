@@ -25,10 +25,19 @@ export default function InputStory() {
       <Card title="type 属性">
         <Isolator>
           <span>string, 默认为default, 还可为secondary/success/warning/error</span>
-          <Input type="secondary" placeholder="secondary" />
-          <Input type="success" placeholder="success" />
+          <Input type="primary" placeholder="primary" />
+          <Input type="primary" disabled placeholder="a" />
+          <Input type="success" disabled placeholder="success" />
           <Input type="warning" placeholder="warning" />
           <Input type="error" placeholder="error" />
+        </Isolator>
+      </Card>
+      <Card title="type 属性">
+        <Isolator>
+          <span>string, 默认为default, 还可为secondary/success/warning/error</span>
+          <Input size="small" type="success" placeholder="success" />
+          <Input type="warning" placeholder="warning" />
+          <Input size="large" type="error" placeholder="error" />
         </Isolator>
       </Card>
     </div>

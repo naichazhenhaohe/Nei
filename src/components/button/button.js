@@ -9,7 +9,6 @@ export default React.memo(
     size = 'default',
     className,
     children,
-    plusStyle,
     onClick,
     danger = false,
     disabled,

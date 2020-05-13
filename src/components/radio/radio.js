@@ -1,24 +1,17 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react'
 import classNames from 'classnames'
 import { useRadioContext } from './radioContext'
+import useTheme from '../_style/useTheme'
 
 export default React.memo(
-  ({
-    className,
-    disabled = false,
-    checked,
-    onChange,
-    value: radioValue,
-    id: radioId,
-    children,
-    ...props
-  }) => {
+  ({ className, disabled = false, checked, onChange, value: radioValue, id: radioId, children, ...props }) => {
     const prefixClass = 'nei-radio'
     const radioClass = classNames(prefixClass, className)
     const innerClass = classNames(`${prefixClass}-inner`)
     const { value: groupValue, disabledAll, inGroup, updateState } = useRadioContext()
     const [isChecked, setIsChecked] = useState(!!checked)
     const isDisabled = useMemo(() => disabled || disabledAll, [disabled, disabledAll])
+    const theme = useTheme()
 
     if (inGroup) {
       useEffect(() => {
@@ -85,28 +78,28 @@ export default React.memo(
             left: 0px;
             top: 50%;
             transform: translateY(-50%);
-            height: 16px;
-            width: 16px;
+            height: 14px;
+            width: 14px;
             border-radius: 50%;
             border-width: ${isChecked ? 0 : '1px'};
             border-style: solid;
             border-image: initial;
-            transition: all 0.2s ease;
-            border-color: ${isDisabled ? '#999' : '#aa11ff'};
+            transition: ${theme.layout.transitionAll};
+            border-color: ${isDisabled ? theme.color.disabledDark : theme.color.primary};
           }
           .nei-radio-inner:before {
             content: '';
             position: absolute;
-            height: 16px;
-            width: 16px;
+            height: 14px;
+            width: 14px;
             border-radius: 50%;
             transform: scale(${isChecked ? 1 : 0});
-            transition: all 0.2s ease;
-            background-color: ${isDisabled ? '#999' : '#aa11ff'};
+            transition: ${theme.layout.transitionAll};
+            background-color: ${isDisabled ? theme.color.disabledDark : theme.color.primary};
             border-style: solid;
             border-width: 1px;
             border-image: initial;
-            border-color: ${isDisabled ? '#999' : '#aa11ff'};
+            border-color: ${isDisabled ? theme.color.disabledDark : theme.color.primary};
           }
           .text {
             font-size: 1rem;
