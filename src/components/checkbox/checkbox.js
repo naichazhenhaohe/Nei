@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useMemo } from 'react'
 import classNames from 'classnames'
 import { useCheckbox } from './checkboxContext'
 import useTheme from '../_style/useTheme'
 
 export default React.memo(
-  ({ initChecked = false, checked = false, value = '', className, onChange, children, disabled, ...props }) => {
+  ({ initChecked = false, checked, value = '', className, onChange, children, disabled, ...props }) => {
     const theme = useTheme()
     const [isChecked, setIsChecked] = useState(initChecked)
     const { updateState, inGroup, disabledAll, values } = useCheckbox()
@@ -14,9 +14,13 @@ export default React.memo(
 
     const prefixClass = 'nei-checkbox'
     const checkboxClass = classNames(prefixClass, className)
-    const innerClass = classNames(`${prefixClass}-inner`, {
-      [`${prefixClass}-checked`]: isChecked
-    })
+    const innerClass = useMemo(
+      () =>
+        classNames(`${prefixClass}-inner`, {
+          [`${prefixClass}-checked`]: isChecked
+        }),
+      [isChecked]
+    )
 
     const handleChange = useCallback(
       e => {

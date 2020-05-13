@@ -27,6 +27,12 @@ export default function CardStory() {
         <Checkbox disabled checked>
           demo
         </Checkbox>
+        <Checkbox initChecked={true} disabled>
+          disabled checkbox
+        </Checkbox>
+        <Checkbox initChecked={false} disabled>
+          disabled checkbox
+        </Checkbox>
       </Card>
       <Card title="group">
         <div>Checkbox.Group组件的属性有 disabled, value 和 onChange </div>
