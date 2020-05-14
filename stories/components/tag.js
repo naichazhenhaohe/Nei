@@ -11,7 +11,6 @@ export default function tagStory() {
           <Tag type="success">success</Tag>
           <Tag type="warning">warning</Tag>
           <Tag type="error">error</Tag>
-          <Tag type="secondary">secondary</Tag>
           <Tag type="lite">lite</Tag>
         </Isolator>
       </Card>

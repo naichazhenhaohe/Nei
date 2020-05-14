@@ -23,7 +23,6 @@ export default function ButtonStory() {
         <Isolator>
           <span>sting, 默认为'default', 还可为'secondary', 'success', 'warning', 'error'</span>
           <Progress value={20} />
-          <Progress type="secondary" value={40} />
           <Progress type="success" value={60} />
           <Progress type="warning" value={80} />
           <Progress type="error" value={100} />
