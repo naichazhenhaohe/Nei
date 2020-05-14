@@ -3,6 +3,9 @@ export const getColor = (type, customColor, theme) => {
     default: {
       color: theme.color.text
     },
+    primary: {
+      color: theme.color.primary
+    },
     success: {
       color: theme.color.success
     },

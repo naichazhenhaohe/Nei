@@ -56,7 +56,10 @@ export default function tagStory() {
           <Tooltip text="success" type="success" placement="right">
             suceess
           </Tooltip>
-          <Tooltip text="warning" type="warning" placement="rightTop">
+          <Tooltip text="primary" type="primary" placement="right">
+            primary
+          </Tooltip>
+          <Tooltip text="warning" type="warning" placement="right">
             warning
           </Tooltip>
           <Tooltip text="error" type="error" placement="right">

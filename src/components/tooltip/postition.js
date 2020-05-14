@@ -116,21 +116,21 @@ export const getArrowPosition = (placement, offset) => {
     },
     left: {
       top: '50%',
-      right: '0',
+      right: '1px',
       left: 'auto',
       bottom: 'auto',
       transform: 'translate(100%, -50%) rotate(180deg)'
     },
     leftTop: {
       top: '10%',
-      right: '0',
+      right: '1px',
       left: 'auto',
       bottom: 'auto',
       transform: 'translate(100%, 0) rotate(180deg)'
     },
     leftBottom: {
       top: 'auto',
-      right: '0',
+      right: '1px',
       left: 'auto',
       bottom: '10%',
       transform: 'translate(100%, 0) rotate(180deg)'
@@ -138,21 +138,21 @@ export const getArrowPosition = (placement, offset) => {
     right: {
       top: '50%',
       right: 'auto',
-      left: '0',
+      left: '1px',
       bottom: 'auto',
       transform: 'translate(-100%, -50%) rotate(0deg)'
     },
     rightTop: {
       top: '10%',
       right: 'auto',
-      left: '0',
+      left: '1px',
       bottom: 'auto',
       transform: 'translate(-100%, 0) rotate(0deg)'
     },
     rightBottom: {
       top: 'auto',
       right: 'auto',
-      left: '0',
+      left: '1px',
       bottom: '10%',
       transform: 'translate(-100%, 0) rotate(0deg)'
     }
