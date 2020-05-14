@@ -20,6 +20,7 @@ export default function CardStory() {
         <Radio disabled checked>
           demo
         </Radio>
+        <Radio disabled>demo</Radio>
       </Card>
       <Card title="onChange 属性">
         <div>onChange, (event)=>{`{}`}, 选项变化事件</div>

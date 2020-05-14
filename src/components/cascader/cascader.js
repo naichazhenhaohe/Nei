@@ -15,7 +15,8 @@ export default React.memo(
     separator = '/',
     className,
     disabled,
-    onChange,
+    onChange = '',
+    placeholder,
     ...props
   }) => {
     const prefixClass = 'nei-cascader'
@@ -59,6 +60,7 @@ export default React.memo(
             readOnly
             value={value.map(item => item.label).join(` ${separator} `)}
             onClick={handleClick}
+            placeholder={placeholder}
           />
           <details open={visible}>
             <summary onClick={handleClick}>
@@ -83,7 +85,7 @@ export default React.memo(
               border-radius: ${theme.layout.radius};
               width: 100%;
               -webkit-appearance: none;
-              cursor: pointer;
+              cursor: ${disabled ? 'not-allowed' : 'pointer'};
             }
             .nei-cascader {
               display: inline-flex;
@@ -92,17 +94,19 @@ export default React.memo(
               border: 1px solid ${theme.color.border};
               border-image: initial;
               border-radius: ${theme.layout.radius};
+              background: ${disabled ? theme.color.disabledBackground : theme.color.background};
+              cursor: ${disabled ? 'not-allowed' : 'pointer'};
             }
             summary {
               outline: none;
               box-sizing: border-box;
               color: rgb(102, 102, 102);
-              background-color: ${theme.color.background};
+              background-color: ${disabled ? theme.color.disabledBackground : theme.color.background};
               height: ${size.size};
               width: ${size.size};
               border-top-right-radius: ${theme.layout.radius};
               border-bottom-right-radius: ${theme.layout.radius};
-              cursor: pointer;
+              cursor: ${disabled ? 'not-allowed' : 'pointer'};
               display: flex;
               justify-content: center;
               align-items: center;

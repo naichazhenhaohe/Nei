@@ -8,6 +8,7 @@ const CascaderBox = React.memo(({ options, level, ...props }) => {
   const theme = useTheme()
 
   const handleClick = (e, option) => {
+    if (option.disabled) return
     if (value.map(item => item.value).includes(option.value)) return
     setSelectedItem(option.value)
     const selectedCopy = JSON.parse(JSON.stringify(value))
@@ -22,8 +23,8 @@ const CascaderBox = React.memo(({ options, level, ...props }) => {
       <div className="nei-cascader-option-section">
         {options.map((option, index) => (
           <div
-            className={`nei-cascader-option ${
-              option.value === selectedItem ? 'nei-cascader-selected-option' : ''
+            className={`nei-cascader-option ${option.value === selectedItem ? 'nei-cascader-selected-option' : ''}${
+              option.disabled ? ' nei-cascader-disabled-option' : ''
             }`}
             key={index}
             onClick={e => handleClick(e, option)}
@@ -32,9 +33,7 @@ const CascaderBox = React.memo(({ options, level, ...props }) => {
           </div>
         ))}
       </div>
-      {value[level] && value[level].children && (
-        <CascaderBox level={level + 1} options={value[level].children} />
-      )}
+      {value[level] && value[level].children && <CascaderBox level={level + 1} options={value[level].children} />}
       <style jsx>{`
         .nei-cascader-option-box {
           display: flex;
@@ -60,6 +59,11 @@ const CascaderBox = React.memo(({ options, level, ...props }) => {
         .nei-cascader-selected-option {
           background: ${theme.color.selectedBackground};
           font-weight: 600;
+        }
+        .nei-cascader-disabled-option,
+        .nei-cascader-disabled-option:hover {
+          background: ${theme.color.disabledColor};
+          cursor: not-allowed;
         }
       `}</style>
     </div>

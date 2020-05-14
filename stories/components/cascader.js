@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Cascader, Card, Button } from '../../src'
+import { Cascader, Card, Button, Isolator } from '../../src'
 
 export default function CardStory() {
   const options = [
@@ -26,6 +26,7 @@ export default function CardStory() {
         {
           value: 'nanjing',
           label: '南京',
+          disabled: true,
           children: [
             {
               value: 'zhonghuamen',
@@ -41,12 +42,21 @@ export default function CardStory() {
     }
   ]
 
+  const handleChange = value => {
+    console.log(value)
+  }
+
   return (
     <div className="checkbox-demo narrow-card">
       <Card title="checked 属性">
-        <Cascader
-          options={options}
-        />
+        <Cascader options={options} />
+      </Card>
+      <Card title="checked 属性">
+        <Isolator>
+          <Cascader disabled size="small" onChange={handleChange} options={options} />
+          <Cascader options={options} />
+          <Cascader size="large" options={options} />
+        </Isolator>
       </Card>
     </div>
   )
