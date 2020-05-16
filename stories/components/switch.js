@@ -14,6 +14,7 @@ export default function SwitchStory() {
       <Card title="disabled 属性">
         <div>Boolean, 默认为false, 用于控制当前开关是否可用</div>
         <Switch disabled />
+        <Switch checked disabled/>
       </Card>
       <Card title="onChange 属性">
         <div>{`(event)=>{}`}, 开关状态变化事件</div>

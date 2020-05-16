@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react'
+import useTheme from '../_style/useTheme'
 
 export default React.memo(({ checked = false, disabled, onChange, className, ...props }) => {
   const [isChecked, setIsChecked] = useState(checked)
+  const theme = useTheme()
   const handleChange = useCallback(
     event => {
       if (disabled) return
@@ -65,10 +67,10 @@ export default React.memo(({ checked = false, disabled, onChange, className, ...
           box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0, rgba(0, 0, 0, 0.1) 0 1px 3px 0;
           transition: left 280ms cubic-bezier(0, 0, 0.2, 1);
           border-radius: 50%;
-          background-color: #fff;
+          background-color: ${disabled ? theme.color.disabledBackground : theme.color.background};
         }
         .checked {
-          background-color: #aa11ff;
+          background-color: ${disabled ? theme.color.disabledDark : theme.color.primary};
         }
         .checked > .inner {
           left: calc(100% - (0.875rem - 2px));

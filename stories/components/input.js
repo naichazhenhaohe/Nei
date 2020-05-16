@@ -1,12 +1,24 @@
 import React, { useState } from 'react'
-import { Card, Input, Isolator } from '../../src'
+import { Card, Input, Isolator, Button } from '../../src'
 
 export default function InputStory() {
   const [value, setValue] = useState('')
+  const useInput = Input.useInput
+  const { state, setState, attrs } = useInput('demo', e => {
+    setShow(e.target.value)
+  })
+  const [show, setShow] = useState(state)
+
   return (
     <div className="checkbox-demo narrow-card">
       <Card title="placeholder 属性">
         <Input placeholder="请输入" />
+      </Card>
+      <Card title="placeholder 属性">
+        <Isolator>
+          <Input {...attrs} />
+          <span>Input Value : {show}</span>
+        </Isolator>
       </Card>
       <Card title="value & onChange 属性">
         <Isolator>
