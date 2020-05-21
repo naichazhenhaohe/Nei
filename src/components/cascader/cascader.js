@@ -15,7 +15,7 @@ export default React.memo(
     separator = '/',
     className,
     disabled,
-    onChange = '',
+    onChange,
     placeholder,
     ...props
   }) => {

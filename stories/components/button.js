@@ -29,6 +29,10 @@ export default function ButtonStory() {
         </Button>
       </Card>
 
+      <Card>
+        <Button onClick={e=>alert(typeof e)}>click</Button>
+      </Card>
+
       <Card title="disabled 属性">
         <Button type="primary" disabled>
           Disabled primary

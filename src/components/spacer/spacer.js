@@ -2,13 +2,6 @@ import React from 'react'
 import classNames from 'classnames'
 import useTheme from '../_style/useTheme'
 
-const getMargin = num => {
-  if (num < 0) {
-    return '0'
-  }
-  return `calc(${num * 15.25}pt + 1px * ${num - 1})`
-}
-
 export default React.memo(({ x = 1, y = 1, isInline, className, ...props }) => {
   const theme = useTheme()
   const gap = theme.layout.gap
@@ -21,6 +14,7 @@ export default React.memo(({ x = 1, y = 1, isInline, className, ...props }) => {
   return (
     <span className={spacerClass} {...props}>
       <style jsx>{`
+        {/* 使用动态 CSS 的特性进行 display 属性选择与 margin 的设置 */}
         span {
           display: ${isInline ? 'inline-block' : 'block'};
           height: 1px;
