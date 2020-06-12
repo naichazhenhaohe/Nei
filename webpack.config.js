@@ -5,7 +5,7 @@ const HtmlwebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 function getFileCollection() {
-  const globPath = './src/**/*.*(jsx|js)'
+  const globPath = './src/**/index.*(jsx|js)'
   const files = glob.sync(globPath)
   return files
 }

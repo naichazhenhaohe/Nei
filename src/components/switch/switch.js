@@ -21,7 +21,7 @@ export default React.memo(({ checked = false, disabled, onChange, className, ...
   return (
     <label className={className} {...props}>
       <input type="checkbox" disabled={disabled} checked={isChecked} onChange={handleChange} />
-      <div className={`nei-switch ${isChecked ? 'checked' : ''} ${disabled ? 'disabled' : ''}`}>
+      <div className="nei-switch" disabled={disabled}>
         <span className="inner" />
       </div>
       <style jsx>{`
@@ -54,8 +54,11 @@ export default React.memo(({ checked = false, disabled, onChange, className, ...
           transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
           position: relative;
           border: 1px solid transparent;
-          background-color: #eaeaea;
+          background-color: ${isChecked ? theme.color.primary : '#eaeaea'};
           padding: 0;
+        }
+        .nei-switch[disabled] {
+          background-color: ${isChecked ? theme.color.disabledDark : '#eaeaea'};
         }
         .inner {
           width: calc(0.875rem - 2px);
@@ -63,18 +66,11 @@ export default React.memo(({ checked = false, disabled, onChange, className, ...
           position: absolute;
           top: 50%;
           transform: translateY(-50%);
-          left: 1px;
-          box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0, rgba(0, 0, 0, 0.1) 0 1px 3px 0;
+          left: ${isChecked ? `calc(100% - (0.875rem - 2px))` : '1px'};
           transition: left 280ms cubic-bezier(0, 0, 0.2, 1);
+          box-shadow: ${isChecked ? 'rgba(0, 0, 0, 0.2) 0 1px 2px 0, rgba(0, 0, 0, 0.1) 0 1px 3px 0' : 'none'};
           border-radius: 50%;
           background-color: ${disabled ? theme.color.disabledBackground : theme.color.background};
-        }
-        .checked {
-          background-color: ${disabled ? theme.color.disabledDark : theme.color.primary};
-        }
-        .checked > .inner {
-          left: calc(100% - (0.875rem - 2px));
-          box-shadow: none;
         }
       `}</style>
     </label>

@@ -118,14 +118,16 @@ export default React.memo(
             border: 1px solid ${disabled || disabledAll ? theme.color.disabledDark : theme.color.primary};
           }
           .nei-checkbox-checked::after {
+            content: '';
             position: absolute;
             display: table;
-            border: 2px solid #fff;
+            border-width: 2px;
+            border-style: solid;
+            border-color: ${theme.color.border};
             border-top: 0;
             border-left: 0;
             transform: rotate(45deg) scale(1) translate(-50%, -50%);
-            transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
-            content: ' ';
+            transition: ${theme.layout.transitionAll};
             top: 50%;
             left: 22%;
             width: 5px;

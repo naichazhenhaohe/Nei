@@ -15,7 +15,6 @@ const useTooltip = () => {
     if (!elementExist) {
       document.body.appendChild(element)
     }
-    console.log('el', element)
     setElementSnapshot(element)
   }, [])
   return elementSnapshot

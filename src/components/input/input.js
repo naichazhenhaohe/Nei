@@ -15,7 +15,6 @@ export default React.memo(
     className,
     onChange,
     type = 'default',
-    children,
     onBlur,
     onFocus,
     ...props

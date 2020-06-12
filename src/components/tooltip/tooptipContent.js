@@ -38,10 +38,9 @@ export default React.memo(({ children, parent, visible, offset, placement, type,
   }
 
   useEffect(() => {
-    const fn = () => updateRect()
-    fn()
-    window.addEventListener('resize', fn)
-    return () => window.removeEventListener('resize', fn)
+    updateRect()
+    window.addEventListener('resize', () => updateRect())
+    return () => window.removeEventListener('resize', () => updateRect())
   }, [])
 
   return createPortal(

@@ -124,21 +124,19 @@ export const getBtnColors = (danger, ghost, type, theme) => {
     }
   }
   if (danger) {
-    if (type === 'link') {
-      return {
-        color: theme.color.danger,
-        boxShadow: 'none',
-        border: 'transparent',
-        background: 'transparent'
-      }
-    } else {
-      return {
-        color: '#fff',
-        background: theme.color.danger,
-        border: `1px solid ${theme.color.danger}`,
-        boxShadow: 'transparent'
-      }
-    }
+    return type === 'link'
+      ? {
+          color: theme.color.danger,
+          boxShadow: 'none',
+          border: 'transparent',
+          background: 'transparent'
+        }
+      : {
+          color: '#fff',
+          background: theme.color.danger,
+          border: `1px solid ${theme.color.danger}`,
+          boxShadow: 'transparent'
+        }
   }
   if (ghost) {
     return getGhostColors(type, theme) || colors['default']
